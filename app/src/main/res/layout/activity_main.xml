@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/pimg"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="60dp"
+        android:orientation="vertical"
+        android:paddingHorizontal="10dp"
+        android:background="#56202020"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomcontainer">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="5dp"
+            android:text="Enter Your Details"
+            android:textSize="40sp"
+            android:gravity="center_horizontal"
+            android:textColor="#fff"
+            android:layout_marginBottom="20dp"
+            android:paddingHorizontal="10dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="5dp"
+            android:text="Name :"
+            android:textColor="#fff"
+            android:textSize="24sp"
+            android:paddingHorizontal="15dp"/>
+
+        <EditText
+            android:id="@+id/nameInput"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/inputdesignlight"
+            android:hint="name"
+            android:textColor="#474747"
+            android:textSize="21sp"
+            android:paddingVertical="3dp"
+            android:paddingLeft="15dp">
+
+        </EditText>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="5dp"
+            android:text="Email :"
+            android:textColor="#fff"
+            android:textSize="24sp"
+            android:paddingHorizontal="15dp"/>
+        <EditText
+            android:id="@+id/emailInput"
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:background="@drawable/inputdesignlight"
+            android:layout_marginBottom="10dp"
+            android:hint="email"
+            android:textSize="21sp"
+            android:elevation="4dp"
+            android:paddingVertical="3dp"
+            android:paddingLeft="15dp">
+
+        </EditText>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottomcontainer"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center_vertical"
+        android:background="#56202020"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_weight="3"
+            android:textSize="21sp"
+            android:textColor="#fff"
+            android:text="@string/press_next"
+            android:layout_height="50dp">
+
+        </TextView>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/submit"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="5dp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/buttondesign"
+            android:textSize="19sp"
+            android:text="next"
+            android:textColor="#ffffff">
+
+        </androidx.appcompat.widget.AppCompatButton>
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
