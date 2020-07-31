@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="#fff"
     android:layout_height="match_parent"
     tools:context=".Home">
     <RelativeLayout
@@ -17,19 +17,17 @@
         android:background="@drawable/top">
 
     </RelativeLayout>
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_paddingTop="68dp"
-        app:layout_constraintBottom_toBottomOf="parent">
+
         <ListView
             android:id="@+id/mlist"
+            android:paddingTop="60dp"
+
             android:layout_width="match_parent"
-            android:background="@color/colorPrimary"
+
             android:layout_height="match_parent"
             android:paddingHorizontal="5dp">
 
         </ListView>
-    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,13 +17,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         View decorView = getWindow().getDecorView();
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
-        ActionBar actionBar = getActionBar();
-        actionBar.hide();
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
 
         mbutton=(Button)findViewById(R.id.submit);
         mname=(EditText) findViewById(R.id.nameInput);
@@ -37,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 }else{
                     nextpage();
                     Toast.makeText(MainActivity.this, "moving on", Toast.LENGTH_SHORT).show();
+                    finish();
                 }
 
             }
