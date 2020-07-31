@@ -33,8 +33,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nextpage();
+            }
+        });
+
     }
-    @OnClick(R.id.submit)
+
     public void nextpage(){
         if(bname.getText().toString().isEmpty() || bemail.getText().toString().isEmpty() || bage.getText().toString().isEmpty()){
             Toast.makeText(MainActivity.this, "fill out all fields first", Toast.LENGTH_LONG).show();
