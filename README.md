@@ -13,10 +13,10 @@ a housing for data from the api to be displayed.
 > xml  \
 > compile with gradle.
 ## test and trial
-just download the project to your local machine   \
-install android studio or intelij with the android extention. Compile with gradle  \
-compile the app.java file using the run button or option in intelij or android studio  \
-Be sure to have an android device or vertual device runnig to be able to Test \
+* just download the project to your local machine   \
+* install android studio or intelij with the android extention. Compile with gradle  \
+* compile the app.java file using the run button or option in intelij or android studio  \
+* > Be sure to have an android device or vertual device runnig to be able to Test \
 
 ## license 
 * Licensed under MIT license.
