@@ -29,8 +29,8 @@ public class Home extends AppCompatActivity {
         mlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                Toast.makeText(Home.this, "clicked", Toast.LENGTH_SHORT).show();
+                String itemName="you clicked "+parent.getItemAtPosition(position).toString();
+                Toast.makeText(Home.this,itemName , Toast.LENGTH_SHORT).show();
             }
         });
         Intent i = getIntent();
