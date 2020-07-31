@@ -11,10 +11,16 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="5dp"
-        android:gravity="center_horizontal"
+        android:gravity="center"
         android:paddingHorizontal="10dp"
 
         android:background="@drawable/top">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textColor="#fff"
+            android:id="@+id/drawnName"/>
 
     </RelativeLayout>
 

@@ -11,9 +11,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class MainActivity extends AppCompatActivity {
-    Button mbutton;
-    EditText mname,memail;
+    private Button mbutton;
+    private EditText mname,memail,mage;
+    private String emailPattern="[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    @BindView(R.id.nameInput) EditText bname;
+    @BindView(R.id.emailInput) EditText bemail;
+    @BindView(R.id.ageInput) EditText bage;
+    @BindView(R.id.submit) Button sub;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,29 +31,24 @@ public class MainActivity extends AppCompatActivity {
         decorView.setSystemUiVisibility(uiOptions);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
-
-        mbutton=(Button)findViewById(R.id.submit);
-        mname=(EditText) findViewById(R.id.nameInput);
-        memail=(EditText) findViewById(R.id.emailInput);
-
-        mbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(mname.getText().toString().isEmpty() || memail.getText().toString().isEmpty()){
-                    Toast.makeText(MainActivity.this, "fill out all fields first", Toast.LENGTH_LONG).show();
-                }else{
-                    nextpage();
-                    Toast.makeText(MainActivity.this, "moving on", Toast.LENGTH_SHORT).show();
-                    finish();
-                }
-
-            }
-        });
     }
-
+    @OnClick(R.id.submit)
     public void nextpage(){
-        Intent i=new Intent(this,Home.class);
-        startActivity(i);
+        if(bname.getText().toString().isEmpty() || bemail.getText().toString().isEmpty() || bage.getText().toString().isEmpty()){
+            Toast.makeText(MainActivity.this, "fill out all fields first", Toast.LENGTH_LONG).show();
+        }else{
+            if ( !bemail.getText().toString().trim().matches(emailPattern)){
+                Toast.makeText(MainActivity.this, "enter a valid email", Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(MainActivity.this, "moving on", Toast.LENGTH_SHORT).show();
+                Intent i=new Intent(this,Home.class);
+                startActivity(i);
+                bname.setText("");bemail.setText("");bage.setText("");
+                finish();
+            }}
     }
+
+
 }
