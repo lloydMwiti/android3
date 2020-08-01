@@ -9,7 +9,7 @@
     <RelativeLayout
         android:background="@drawable/top"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="260dp"
         android:layout_centerInParent="true"
         android:layout_marginLeft="40dp"
         android:minHeight="220dp"
@@ -42,6 +42,7 @@
 
 
         <LinearLayout
+            android:id="@+id/laoutholder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
@@ -65,7 +66,19 @@
                 android:textColor="#fff"
                 android:id="@+id/acage"/>
         </LinearLayout>
-
+<Button
+    android:id="@+id/done"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingLeft="19dp"
+    android:paddingRight="19dp"
+    android:layout_marginTop="20dp"
+    android:background="@drawable/inputdesignlight"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentBottom="true"
+    android:text="done"
+    android:textColor="#242428"
+    android:textSize="21sp"/>
 
     </RelativeLayout>
 

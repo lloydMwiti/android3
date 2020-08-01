@@ -2,6 +2,8 @@ package com.example.restuarant;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +15,8 @@ public class Accounts extends AppCompatActivity {
     @BindView(R.id.acname)TextView acname;
     @BindView(R.id.acemail)TextView acemail;
     @BindView(R.id.acage)TextView acage;
+    @BindView(R.id.done) Button done;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,5 +33,17 @@ public class Accounts extends AppCompatActivity {
         acemail.setText(superEmail);
         acage.setText(superAge);
 
+        done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                returnHome();
+            }
+        });
+
+    }
+
+    public void returnHome(){
+        Intent i=new Intent(this,Home.class);
+        startActivity(i);
     }
 }
