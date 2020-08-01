@@ -17,16 +17,16 @@ import butterknife.ButterKnife;
 
 public class Home extends AppCompatActivity {
 
-    @BindView(R.id.drawnName)TextView displayName;
+    @BindView(R.id.drawnName) TextView displayName;
     @BindView(R.id.mlist) ListView mlist;
-    @BindView(R.id.user)
-    Button account;
-
+    @BindView(R.id.user) Button account;
+    private String superName,superEmail,superAge;
     private String[] arrString=new String[] {"Mi Mero Mole", "Mother's Bistro",
             "Life of Pie", "Screen Door", "Luc Lac", "Sweet Basil",
             "Slappy Cakes", "Equinox", "Miss Delta's", "Andina",
             "Lardo", "Portland City Grill", "Fat Head's Brewery",
             "Chipotle", "Subway"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,22 +42,23 @@ public class Home extends AppCompatActivity {
                 Toast.makeText(Home.this,itemName , Toast.LENGTH_SHORT).show();
             }
         });
+
+        Intent i = getIntent();
+        superName=i.getStringExtra("superName");
+        superEmail=i.getStringExtra("superEmail");
+        superAge=i.getStringExtra("superAge");
+        displayName.setText(superName);
+
         account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                accountPage();
+                Intent i = new Intent(Home.this,Accounts.class);
+                i.putExtra("superName",superName);
+                i.putExtra("superEmail",superEmail);
+                i.putExtra("superAge",superAge);
+                startActivity(i);
             }
         });
-        Intent i = getIntent();
-        String superName=i.getStringExtra("superName");
-        String superEmail=i.getStringExtra("superEmail");
-        String superAge=i.getStringExtra("superAge");
-        displayName.setText(superName);
-
     }
 
-    public void accountPage(){
-        Intent i =new Intent(this,Accounts.class);
-        startActivity(i);
-    }
 }

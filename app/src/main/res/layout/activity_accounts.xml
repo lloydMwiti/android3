@@ -51,18 +51,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="23sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:textColor="#fff"
                 android:id="@+id/acname"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="23sp"
+                android:layout_marginBottom="10dp"
                 android:textColor="#fff"
                 android:id="@+id/acemail"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="23sp"
+                android:layout_marginBottom="10dp"
                 android:textColor="#fff"
                 android:id="@+id/acage"/>
         </LinearLayout>
