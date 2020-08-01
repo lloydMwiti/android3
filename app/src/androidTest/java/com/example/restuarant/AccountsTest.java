@@ -4,13 +4,13 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class HomeTest {
+public class AccountsTest {
 
     @Test
     public void onCreate() {
     }
 
     @Test
-    public void accountPage() {
+    public void returnHome() {
     }
 }
