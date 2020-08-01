@@ -8,10 +8,17 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class Home extends AppCompatActivity {
-    private ListView mlist;
+
+    @BindView(R.id.drawnName)TextView displayName;
+    @BindView(R.id.mlist) ListView mlist;
+
     private String[] arrString=new String[] {"Mi Mero Mole", "Mother's Bistro",
             "Life of Pie", "Screen Door", "Luc Lac", "Sweet Basil",
             "Slappy Cakes", "Equinox", "Miss Delta's", "Andina",
@@ -21,8 +28,7 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-        mlist=(ListView) findViewById(R.id.mlist);
+        ButterKnife.bind(this);
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrString);
         mlist.setAdapter(adapter);
 
@@ -34,7 +40,10 @@ public class Home extends AppCompatActivity {
             }
         });
         Intent i = getIntent();
-        String location=i.getStringExtra("location");
+        String superName=i.getStringExtra("superName");
+        String superEmail=i.getStringExtra("superEmail");
+        String superAge=i.getStringExtra("superAge");
+        displayName.setText(superName);
 
     }
 }

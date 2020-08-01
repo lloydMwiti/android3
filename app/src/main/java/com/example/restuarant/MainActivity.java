@@ -51,6 +51,12 @@ public class MainActivity extends AppCompatActivity {
             }else{
                 Toast.makeText(MainActivity.this, "moving on", Toast.LENGTH_SHORT).show();
                 Intent i=new Intent(this,Home.class);
+                String superName=bname.getText().toString();
+                String superEmail=bemail.getText().toString();
+                String superAge=bage.getText().toString();
+                i.putExtra("superName",superName);
+                i.putExtra("superEmail",superEmail);
+                i.putExtra("superAge",superAge);
                 startActivity(i);
                 bname.setText("");bemail.setText("");bage.setText("");
                 finish();
