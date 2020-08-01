@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="5dp"
-        android:gravity="center"
         android:paddingHorizontal="10dp"
 
         android:background="@drawable/top">
@@ -19,8 +18,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="24sp"
+            android:layout_centerInParent="true"
             android:textColor="#fff"
             android:id="@+id/drawnName"/>
+        <Button
+            android:id="@+id/user"
+            android:layout_width="41dp"
+            android:layout_height="41dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="user"
+            android:background="@drawable/inputdesignlight"/>
 
     </RelativeLayout>
 

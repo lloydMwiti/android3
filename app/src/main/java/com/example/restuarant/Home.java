@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +19,8 @@ public class Home extends AppCompatActivity {
 
     @BindView(R.id.drawnName)TextView displayName;
     @BindView(R.id.mlist) ListView mlist;
+    @BindView(R.id.user)
+    Button account;
 
     private String[] arrString=new String[] {"Mi Mero Mole", "Mother's Bistro",
             "Life of Pie", "Screen Door", "Luc Lac", "Sweet Basil",
@@ -39,11 +42,22 @@ public class Home extends AppCompatActivity {
                 Toast.makeText(Home.this,itemName , Toast.LENGTH_SHORT).show();
             }
         });
+        account.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                accountPage();
+            }
+        });
         Intent i = getIntent();
         String superName=i.getStringExtra("superName");
         String superEmail=i.getStringExtra("superEmail");
         String superAge=i.getStringExtra("superAge");
         displayName.setText(superName);
 
+    }
+
+    public void accountPage(){
+        Intent i =new Intent(this,Accounts.class);
+        startActivity(i);
     }
 }
