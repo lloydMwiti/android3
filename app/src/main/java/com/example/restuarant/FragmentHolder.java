@@ -6,13 +6,21 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.restuarant.Fragments.FragmentFind;
 import com.example.restuarant.Fragments.FragmentHome;
 import com.example.restuarant.Fragments.FragmentUser;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class  FragmentHolder extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +29,7 @@ public class  FragmentHolder extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new FragmentHome()).commit();
         BottomNavigationView bottomNav= findViewById(R.id.bottomNav);
         bottomNav.setOnNavigationItemSelectedListener(bnavlistener);
+
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener bnavlistener=
