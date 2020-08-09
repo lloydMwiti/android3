@@ -43,7 +43,5 @@ public class Accounts extends AppCompatActivity {
     }
 
     public void returnHome(){
-        Intent i=new Intent(this,Home.class);
-        startActivity(i);
-    }
+        super.onBackPressed();  }
 }
