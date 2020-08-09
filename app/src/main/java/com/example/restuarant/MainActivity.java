@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.restuarant.Fragments.FragmentHome;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -50,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "enter a valid email", Toast.LENGTH_SHORT).show();
             }else{
                 Toast.makeText(MainActivity.this, "moving on", Toast.LENGTH_SHORT).show();
-                Intent i=new Intent(this,Home.class);
+                Intent i=new Intent(this, FragmentHolder.class);
                 String superName=bname.getText().toString();
                 String superEmail=bemail.getText().toString();
                 String superAge=bage.getText().toString();
