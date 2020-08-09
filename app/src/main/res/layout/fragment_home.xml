@@ -5,15 +5,9 @@
     <ListView
         android:id="@+id/mylist"
         android:layout_width="match_parent"
-        android:layout_above="@id/clicktest"
         android:layout_height="match_parent"
         android:paddingHorizontal="5dp">
 
     </ListView>
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/clicktest"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:text="click"/>
+
 </RelativeLayout>

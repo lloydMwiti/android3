@@ -28,16 +28,11 @@ public class FragmentHome extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root=inflater.inflate(R.layout.fragment_home,container,false);
-        Button btn=root.findViewById(R.id.clicktest);
+
         ListView mlist=root.findViewById(R.id.mylist);
         ArrayAdapter adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, arrString);
         mlist.setAdapter(adapter);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity(), "might work", Toast.LENGTH_SHORT).show();
-            }
-        });
+
         return root;
 
     }
