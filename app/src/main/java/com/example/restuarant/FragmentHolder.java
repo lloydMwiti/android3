@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,8 +21,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class  FragmentHolder extends AppCompatActivity {
-
-
+    final FragmentUser fragUser=new FragmentUser();
+    String superName,superEmail,superAge;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,22 @@ public class  FragmentHolder extends AppCompatActivity {
         BottomNavigationView bottomNav= findViewById(R.id.bottomNav);
         bottomNav.setOnNavigationItemSelectedListener(bnavlistener);
 
+        Intent i = getIntent();
+        superName= "Your Name :" + i.getStringExtra("superName");
+        superEmail="Your Email :" + i.getStringExtra("superEmail");
+        superAge="Your age :" + i.getStringExtra("superAge");
+    }
+
+    public String getSuperName() {
+        return superName;
+    }
+
+    public String getSuperEmail() {                       
+        return superEmail;
+    }
+
+    public String getSuperAge() {
+        return superAge;
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener bnavlistener=
