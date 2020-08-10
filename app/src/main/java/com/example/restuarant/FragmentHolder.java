@@ -7,9 +7,6 @@ import androidx.fragment.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.restuarant.Fragments.FragmentFind;
 import com.example.restuarant.Fragments.FragmentHome;
@@ -17,11 +14,9 @@ import com.example.restuarant.Fragments.FragmentUser;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class  FragmentHolder extends AppCompatActivity {
-    final FragmentUser fragUser=new FragmentUser();
+
     String superName,superEmail,superAge;
 
     @Override
@@ -38,17 +33,7 @@ public class  FragmentHolder extends AppCompatActivity {
         superAge="Your age :" + i.getStringExtra("superAge");
     }
 
-    public String getSuperName() {
-        return superName;
-    }
 
-    public String getSuperEmail() {                       
-        return superEmail;
-    }
-
-    public String getSuperAge() {
-        return superAge;
-    }
 
     private BottomNavigationView.OnNavigationItemSelectedListener bnavlistener=
             new BottomNavigationView.OnNavigationItemSelectedListener() {

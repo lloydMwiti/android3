@@ -1,6 +1,5 @@
 package com.example.restuarant.Fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +16,6 @@ import com.example.restuarant.R;
 public class FragmentUser extends Fragment {
     TextView vname,vemail,vage;
     View root;
-    FragmentHolder fr=new FragmentHolder();
 
 
     @Nullable
