@@ -14,7 +14,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.restuarant.ListAdapter;
 import com.example.restuarant.R;
+import com.example.restuarant.SetData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class FragmentHome extends Fragment {
@@ -30,9 +35,33 @@ public class FragmentHome extends Fragment {
         View root=inflater.inflate(R.layout.fragment_home,container,false);
 
         ListView mlist=root.findViewById(R.id.mylist);
-        ArrayAdapter adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, arrString);
-        mlist.setAdapter(adapter);
+//        ArrayAdapter adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, arrString);
 
+        List<SetData> setData;
+        setData=new ArrayList<>();
+        setData.add(new SetData(R.drawable.pimg,"james","james@gmail.com"));
+        setData.add(new SetData(R.drawable.pimg,"james","james@gmail.com"));
+        setData.add(new SetData(R.drawable.pimg,"james","james@gmail.com"));
+        setData.add(new SetData(R.drawable.pimg,"james","james@gmail.com"));
+        setData.add(new SetData(R.drawable.pimg,"james","james@gmail.com"));
+        setData.add(new SetData(R.drawable.pimg,"james","james@gmail.com"));
+        setData.add(new SetData(R.drawable.pimg,"james","james@gmail.com"));
+        setData.add(new SetData(R.drawable.pimg,"james","james@gmail.com"));
+        setData.add(new SetData(R.drawable.pimg,"james","james@gmail.com"));
+        setData.add(new SetData(R.drawable.pimg,"james","james@gmail.com"));
+        setData.add(new SetData(R.drawable.pimg,"james","james@gmail.com"));
+        setData.add(new SetData(R.drawable.pimg,"james","james@gmail.com"));
+        setData.add(new SetData(R.drawable.pimg,"james","james@gmail.com"));
+        setData.add(new SetData(R.drawable.pimg,"james","james@gmail.com"));
+        setData.add(new SetData(R.drawable.pimg,"james","james@gmail.com"));
+        setData.add(new SetData(R.drawable.pimg,"james","james@gmail.com"));
+        setData.add(new SetData(R.drawable.pimg,"james","james@gmail.com"));
+        setData.add(new SetData(R.drawable.pimg,"james","james@gmail.com"));
+        setData.add(new SetData(R.drawable.pimg,"james","james@gmail.com"));
+        setData.add(new SetData(R.drawable.pimg,"james","james@gmail.com"));
+        setData.add(new SetData(R.drawable.pimg,"james","james@gmail.com"));
+        ListAdapter listAdapter=new ListAdapter(getContext(),R.layout.list_item,setData);
+        mlist.setAdapter(listAdapter);
         return root;
 
     }
