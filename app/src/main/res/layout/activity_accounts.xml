@@ -6,84 +6,11 @@
 
     android:layout_height="match_parent"
     tools:context=".Accounts">
-    <RelativeLayout
-        android:background="@drawable/top"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="260dp"
-        android:layout_centerInParent="true"
-        android:layout_marginLeft="40dp"
-        android:minHeight="220dp"
-        android:padding="10dp"
-        android:layout_marginRight="40dp"
-        android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-            <ImageView
-                android:layout_width="50dp"
-                android:background="@drawable/inputdesignlight"
-                android:src="@drawable/ic_cloud_black_24dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center">
+        android:layout_height="match_parent"
+        android:id="@+id/ourframe">
 
-            </ImageView>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#fff"
-                android:textSize="30sp"
-                android:text="Account"
-
-                android:layout_marginLeft="50dp"/>
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/laoutholder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="23sp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:textColor="#fff"
-                android:id="@+id/acname"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="23sp"
-                android:layout_marginBottom="10dp"
-                android:textColor="#fff"
-                android:id="@+id/acemail"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="23sp"
-                android:layout_marginBottom="10dp"
-                android:textColor="#fff"
-                android:id="@+id/acage"/>
-        </LinearLayout>
-<Button
-    android:id="@+id/done"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:paddingLeft="19dp"
-    android:paddingRight="19dp"
-    android:layout_marginTop="20dp"
-    android:background="@drawable/inputdesignlight"
-    android:layout_alignParentRight="true"
-    android:layout_alignParentBottom="true"
-    android:text="done"
-    android:textColor="#242428"
-    android:textSize="21sp"/>
-
-    </RelativeLayout>
+    </FrameLayout>
 
 </RelativeLayout>

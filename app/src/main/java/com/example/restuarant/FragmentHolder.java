@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.restuarant.Fragments.FragmentFind;
 import com.example.restuarant.Fragments.FragmentHome;
@@ -42,6 +43,7 @@ public class  FragmentHolder extends AppCompatActivity {
                     Fragment selected=null;
                     switch (item.getItemId()){
                         case R.id.home_dir:
+                            Toast.makeText(FragmentHolder.this, superEmail, Toast.LENGTH_SHORT).show();
                             selected=new FragmentHome();
                             break;
                         case R.id.user_dir:
