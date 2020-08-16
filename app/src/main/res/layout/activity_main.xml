@@ -3,69 +3,86 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:gravity="center"
     android:layout_height="match_parent"
-    android:background="@drawable/pimg"
-    android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".MainActivity">
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="60dp"
         android:orientation="vertical"
-        android:paddingHorizontal="10dp"
-        android:background="#56202020"
-        android:gravity="center_vertical"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/bottomcontainer">
-        <TextView
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="270dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/viseti"/>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingVertical="5dp"
-            android:text="Enter Your Details"
-            android:textSize="40sp"
-            android:textStyle="bold"
-            android:layout_gravity="top"
-            android:gravity="center_horizontal"
-            android:textColor="#fff"
-            android:layout_marginBottom="35dp"
-            android:paddingHorizontal="10dp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingVertical="5dp"
-            android:text="Name :"
-            android:textColor="#fff"
-            android:textSize="24sp"
-            android:paddingHorizontal="15dp"/>
+            android:orientation="vertical"
+            android:background="@drawable/slight_curve_light"
+            android:backgroundTint="#FF5722"
+            android:layout_marginTop="-135dp"
+            android:layout_marginBottom="25dp"
+            android:elevation="20dp"
+            android:translationZ="12dp"
+            android:layout_marginHorizontal="20dp"
+            android:padding="10dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="5dp"
+                android:text="Welcome To Fire Base Login "
+                android:textSize="40sp"
+                android:textStyle="bold"
+                android:layout_gravity="top"
+                android:gravity="center_vertical"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/white"
+                android:paddingHorizontal="10dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="5dp"
+                android:text="Create an account below"
+                android:textColor="#E6E6E6"
+                android:textSize="24sp"
+                android:layout_marginBottom="20dp"
+
+                android:paddingHorizontal="15dp"/>
+        </LinearLayout>
 
         <EditText
             android:id="@+id/nameInput"
             android:layout_width="match_parent"
             android:layout_height="46dp"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/inputdesignlight"
+            android:background="@drawable/outline_light"
             android:hint="name"
+            android:layout_marginHorizontal="10dp"
             android:textColor="#474747"
             android:textSize="21sp"
             android:paddingVertical="3dp"
             android:paddingLeft="15dp">
 
         </EditText>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingVertical="5dp"
-            android:text="Email :"
-            android:textColor="#fff"
-            android:textSize="24sp"
-            android:paddingHorizontal="15dp"/>
+
         <EditText
             android:id="@+id/emailInput"
+            android:layout_marginHorizontal="10dp"
+
             android:inputType="textEmailAddress"
             android:layout_width="match_parent"
             android:layout_height="46dp"
-            android:background="@drawable/inputdesignlight"
+            android:background="@drawable/outline_light"
             android:layout_marginBottom="10dp"
             android:hint="email"
             android:textSize="21sp"
@@ -74,20 +91,14 @@
             android:paddingLeft="15dp">
 
         </EditText>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingVertical="5dp"
-            android:text="Your Age :"
-            android:textColor="#fff"
-            android:textSize="24sp"
-            android:paddingHorizontal="15dp"/>
         <EditText
             android:id="@+id/ageInput"
             android:inputType="number"
+            android:layout_marginHorizontal="10dp"
+
             android:layout_width="match_parent"
             android:layout_height="46dp"
-            android:background="@drawable/inputdesignlight"
+            android:background="@drawable/outline_light"
             android:layout_marginBottom="10dp"
             android:hint="age"
             android:textSize="21sp"
@@ -96,15 +107,40 @@
             android:paddingLeft="15dp">
 
         </EditText>
+        <EditText
+            android:id="@+id/passwordInput"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="10dp"
+            android:layout_height="46dp"
+            android:background="@drawable/outline_light"
+            android:layout_marginBottom="10dp"
+            android:hint="password"
+            android:textSize="21sp"
+            android:elevation="4dp"
+            android:paddingVertical="3dp"
+            android:paddingLeft="15dp">
+
+        </EditText>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/submit"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="10dp"
+            android:layout_height="45dp"
+            android:background="@drawable/buttondesign"
+            android:text="Create Account"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
+
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/bottomcontainer"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:layout_gravity="center_vertical"
-        android:background="#56202020"
+
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         >
@@ -113,13 +149,13 @@
             android:gravity="center"
             android:layout_weight="6"
             android:textSize="21sp"
-            android:textColor="#fff"
+            android:textColor="@color/text_grey"
             android:text="@string/press_next"
             android:layout_height="50dp">
 
         </TextView>
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/submit"
+            android:id="@+id/login"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginHorizontal="5dp"
@@ -128,12 +164,13 @@
             android:layout_marginRight="10dp"
             android:background="@drawable/buttondesign"
             android:textSize="19sp"
-            android:text="next"
+            android:text="login"
             android:textColor="#ffffff">
 
         </androidx.appcompat.widget.AppCompatButton>
 
 
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
