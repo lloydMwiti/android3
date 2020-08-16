@@ -1,5 +1,6 @@
 package com.example.restuarant;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,7 +10,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -47,6 +53,32 @@ FirebaseDatabase database=FirebaseDatabase.getInstance();
         if(loginemail.getText().toString().isEmpty() || loginpassword.getText().toString().isEmpty()){
             Toast.makeText(this, "fill all fields", Toast.LENGTH_SHORT).show();
         }else{
+            DatabaseReference reference=FirebaseDatabase.getInstance().getReference("users");
+            Query q=reference.orderByChild("name").equalTo(loginemail.getText().toString());
+            q.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if(dataSnapshot.exists()){
+                        String dbpassword=dataSnapshot.child(loginemail.getText().toString()).child("password").getValue(String.class);
+
+                        if(dbpassword.equals(loginpassword.getText().toString().trim())){
+                            Intent i=new Intent(Login.this,FragmentHolder.class);
+                            startActivity(i);
+                        }else if(!dbpassword.equals(loginpassword.getText().toString().trim())){
+                            loginpassword.setError("wrong password");
+                            Toast.makeText(Login.this, "check your password", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }else{
+                        Toast.makeText(Login.this, "Account does not exist", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
 
         }
     }
