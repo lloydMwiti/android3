@@ -1,6 +1,6 @@
 # BASIC DESIGN
 # About
-a java application that allows a user to login to their account to view music and movie media,api missing in this version but later versions will include it.
+a java application that allows a user to login to their account to view music and movie media.
 ## Developer
 * Lloyd Mwiti
 
@@ -11,6 +11,8 @@ a housing for data from the api to be displayed.
 ## Language used
 > java  \
 > xml  \
+> firebase  \
+> Gmaps api  \
 > compile with gradle.
 ## test and trial
 * just download the project to your local machine   \
