@@ -1,5 +1,6 @@
 package com.example.restuarant;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActionBar;
@@ -13,8 +14,12 @@ import android.widget.Toast;
 
 import com.example.restuarant.DB.Db;
 import com.example.restuarant.Fragments.FragmentHome;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -72,29 +77,50 @@ public class MainActivity extends AppCompatActivity {
 
             }
             else{
-                Toast.makeText(MainActivity.this, "moving on", Toast.LENGTH_SHORT).show();
-                Intent i=new Intent(this, FragmentHolder.class);
-                String superName=bname.getText().toString();
-                String superEmail=bemail.getText().toString();
-                String superAge=bage.getText().toString();
-                String superPass=bpass.getText().toString();
+                final Intent i=new Intent(this, FragmentHolder.class);
+                final String superName=bname.getText().toString();
+                final String superEmail=bemail.getText().toString();
+                final String superAge=bage.getText().toString();
+                final String superPass=bpass.getText().toString();
                 i.putExtra("superName",superName);
                 i.putExtra("superEmail",superEmail);
                 i.putExtra("superAge",superAge);
                 i.putExtra("superPass",superPass);
-                startActivity(i);
-                bname.setText("");bemail.setText("");bage.setText("");bpass.setText("");
+
+
 
             // firebase connection
                 fdb=FirebaseDatabase.getInstance();
                 reference=fdb.getReference("users");
 
-                Db db=new Db(superName,superEmail,superPass,superAge);
+                final Db db=new Db(superName,superEmail,superPass,superAge);
+                Query q=reference.orderByChild("name").equalTo(superName);
+                q.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if(dataSnapshot.exists()){
+                            bname.setError("username is not available");
+                            Toast.makeText(MainActivity.this, "try another username", Toast.LENGTH_SHORT).show();
 
-                reference.child(superName).setValue(db);
-                finish();
+                        }else{
+                            startActivity(i);
+                            Toast.makeText(MainActivity.this, "moving on", Toast.LENGTH_SHORT).show();
+                            reference.child(superName).setValue(db);
+                            bname.setText("");bemail.setText("");bage.setText("");bpass.setText("");
+                            finish();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+
             }}
     }
+
 
 
 }
