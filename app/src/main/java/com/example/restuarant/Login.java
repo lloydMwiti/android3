@@ -46,7 +46,12 @@ FirebaseDatabase database=FirebaseDatabase.getInstance();
             }
         });
     }
+    public void popup(String title,String msg){
+        Popup popup=new Popup(title,msg);
+        popup.show(getSupportFragmentManager(),"popup");
+    }
     public void signup(){
+        loginpassword.setText("");loginemail.setText("");
         finish();
     }
     public void login(){
@@ -63,14 +68,18 @@ FirebaseDatabase database=FirebaseDatabase.getInstance();
 
                         if(dbpassword.equals(loginpassword.getText().toString().trim())){
                             Intent i=new Intent(Login.this,FragmentHolder.class);
+                            loginpassword.setText("");loginemail.setText("");
+                            finish();
                             startActivity(i);
                         }else if(!dbpassword.equals(loginpassword.getText().toString().trim())){
                             loginpassword.setError("wrong password");
                             Toast.makeText(Login.this, "check your password", Toast.LENGTH_SHORT).show();
+                            popup("Failed ","the password you entered is wrong ");
                         }
 
                     }else{
                         Toast.makeText(Login.this, "Account does not exist", Toast.LENGTH_SHORT).show();
+                        popup("Failed ","no such account exist check your user name");
                     }
                 }
 

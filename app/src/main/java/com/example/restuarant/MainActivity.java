@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     private void popupfalse() {
-                        Popup popup=new Popup();
+                        Popup popup=new Popup("Failed to register","user name is already taken");
                         popup.show(getSupportFragmentManager(),"popup");
                     }
 
