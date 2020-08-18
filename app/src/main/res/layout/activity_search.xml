@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Search">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -9,7 +14,6 @@
         android:layout_marginBottom="10dp"
         android:fontFamily="sans-serif"
         android:paddingStart="15sp"
-        android:textStyle="bold"
         android:text="Firebase Search"
         android:textColor="@color/text"
         android:textSize="26sp"/>
@@ -21,18 +25,18 @@
         android:gravity="center"
         android:padding="5dp">
         <EditText
-            android:id="@+id/search_boxs"
+            android:id="@+id/search_box"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginStart="15dp"
-            android:layout_toLeftOf="@id/search_btns"
+            android:layout_toLeftOf="@id/search_btn"
             android:background="@drawable/outline_light_curved"
-            android:hint="search"
+            android:hint="seach"
             android:paddingStart="15dp"
             android:textColor="@color/text_grey"
             android:textColorHint="@color/text_grey" />
         <ImageButton
-            android:id="@+id/search_btns"
+            android:id="@+id/search_btn"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_alignParentEnd="true"
@@ -43,10 +47,13 @@
             android:src="@drawable/ic_search_black_24dp"
             android:tint="@color/white" />
     </RelativeLayout>
-<ListView
-    android:padding="10dp"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/mylistsearch"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/firebase_rec"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="15dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="15dp" />
 
 </LinearLayout>

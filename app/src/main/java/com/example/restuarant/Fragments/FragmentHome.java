@@ -35,8 +35,6 @@ public class FragmentHome extends Fragment {
         View root=inflater.inflate(R.layout.fragment_home,container,false);
 
         ListView mlist=root.findViewById(R.id.mylist);
-//        ArrayAdapter adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, arrString);
-
         List<SetData> setData;
         setData=new ArrayList<>();
         setData.add(new SetData(R.drawable.pimg,"james","james@gmail.com"));
