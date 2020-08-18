@@ -11,7 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#59000000"
+        android:background="#23000000"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -22,7 +22,7 @@
             android:textStyle="bold"
             android:gravity="start"
             android:paddingStart="10dp"
-            android:text="Welcome back : login to your account"
+            android:text="Welcome : Login To Your Account"
             android:layout_marginBottom="20dp"
             android:textColor="@color/white"
             android:textSize="45dp" />
@@ -35,7 +35,7 @@
             android:layout_marginBottom="10dp"
             android:background="@drawable/top"
             android:elevation="4dp"
-            android:hint="your email"
+            android:hint="user name"
             android:inputType="textEmailAddress"
             android:paddingVertical="3dp"
             android:paddingLeft="15dp"
@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="46dp"
             android:layout_marginHorizontal="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="15dp"
             android:background="@drawable/top"
             android:elevation="4dp"
             android:hint="password"

@@ -100,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if(dataSnapshot.exists()){
                             bname.setError("username is not available");
+                            popupfalse();
                             Toast.makeText(MainActivity.this, "try another username", Toast.LENGTH_SHORT).show();
 
                         }else{
@@ -109,6 +110,11 @@ public class MainActivity extends AppCompatActivity {
                             bname.setText("");bemail.setText("");bage.setText("");bpass.setText("");
                             finish();
                         }
+                    }
+
+                    private void popupfalse() {
+                        Popup popup=new Popup();
+                        popup.show(getSupportFragmentManager(),"popup");
                     }
 
                     @Override

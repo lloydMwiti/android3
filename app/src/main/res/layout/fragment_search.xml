@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:padding="5dp"
+        android:gravity="center">
+        <ImageButton
+            android:id="@+id/drawer_btn"
+            android:layout_width="45dp"
+            android:scaleType="centerCrop"
+            android:background="@android:color/transparent"
+            android:layout_height="45dp"
+            android:src="@drawable/ic_menu_black_24dp"/>
+        <EditText
+            android:id="@+id/search_box"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/inputdesigndark"
+            android:textColor="@color/white"
+            android:hint="seach"
+            android:paddingStart="15dp"
+            android:textColorHint="@color/white"
+            android:layout_toLeftOf="@id/search_btn"
+            android:layout_toRightOf="@id/drawer_btn"/>
+        <ImageButton
+            android:id="@+id/search_btn"
+            android:layout_width="45dp"
+            android:layout_marginStart="5dp"
+            android:scaleType="centerCrop"
+            android:layout_alignParentEnd="true"
+            android:background="@android:color/transparent"
+            android:layout_height="45dp"
+            android:src="@drawable/ic_search_black_24dp"/>
+
+    </RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/firebase_rec"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+
+</LinearLayout>

@@ -8,23 +8,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FragmentHolder">
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNav"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/bottom_nav_design"
-        android:elevation="60dp"
-        app:menu="@menu/bottom_buttons"
 
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="2dp"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp">
-
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
@@ -32,9 +16,24 @@
         android:paddingStart="5dp"
         android:paddingEnd="5dp"
         android:layout_marginBottom="3dp"
-        android:layout_below="@id/bottomNav">
+        android:layout_above="@id/bottomNav">
 
     </FrameLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/bottom_nav_design"
+        android:elevation="60dp"
+        app:menu="@menu/bottom_buttons"
+        android:layout_marginHorizontal="2dp"
+        android:layout_marginBottom="2dp"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        android:layout_alignParentBottom="true"
+        >
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 
 </RelativeLayout>

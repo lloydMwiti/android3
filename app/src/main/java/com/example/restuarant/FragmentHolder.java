@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import com.example.restuarant.Fragments.FragmentFind;
 import com.example.restuarant.Fragments.FragmentHome;
+import com.example.restuarant.Fragments.FragmentNotification;
+import com.example.restuarant.Fragments.FragmentSearch;
 import com.example.restuarant.Fragments.FragmentUser;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -51,6 +53,12 @@ public class  FragmentHolder extends AppCompatActivity {
                             break;
                         case R.id.find_dir:
                             selected=new FragmentFind();
+                            break;
+                        case R.id.search_dir:
+                            selected=new FragmentSearch();
+                            break;
+                        case R.id.notification_dir:
+                            selected=new FragmentNotification();
                             break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selected).commit();
