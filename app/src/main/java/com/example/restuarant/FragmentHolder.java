@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,6 +25,7 @@ public class  FragmentHolder extends AppCompatActivity {
 
     String superName,superEmail,superAge;
     Toolbar toolbar;
+    SharedPreferences sp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +35,10 @@ public class  FragmentHolder extends AppCompatActivity {
         bottomNav.setOnNavigationItemSelectedListener(bnavlistener);
         toolbar= findViewById(R.id.custom_toolbar);
         setSupportActionBar(toolbar);
-
+        sp=getApplicationContext().getSharedPreferences("userPref",MODE_PRIVATE);
+        String nameStr=sp.getString("dbname","");
+        String emailStr=sp.getString("dbemail","");
+        toolbar.setTitle(nameStr);
         Intent i = getIntent();
         superName= "Your Name :" + i.getStringExtra("superName");
         superEmail="Your Email :" + i.getStringExtra("superEmail");
