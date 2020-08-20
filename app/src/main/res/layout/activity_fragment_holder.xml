@@ -10,11 +10,10 @@
     tools:context=".FragmentHolder">
     <androidx.appcompat.widget.Toolbar
         app:title="news"
-        android:outlineAmbientShadowColor="@android:color/transparent"
-        android:outlineSpotShadowColor="@android:color/transparent"
         android:background="@color/white"
         android:gravity="center_vertical"
         android:elevation="0dp"
+        app:elevation="0dp"
         app:titleMarginStart="35dp"
         app:titleTextColor="@color/text"
         app:logo="@drawable/ic_menu_black_24dp"
@@ -39,7 +38,7 @@
         android:layout_height="45dp"
         android:background="@color/white"
         app:menu="@menu/bottom_buttons"
-        android:elevation="0dp"
+        app:elevation="0dp"
         app:itemIconTint="@color/text_grey"
         app:itemTextColor="@color/text_grey"
         android:layout_below="@id/custom_toolbar"

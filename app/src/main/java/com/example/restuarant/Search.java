@@ -2,16 +2,23 @@ package com.example.restuarant;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.restuarant.DB.Db;
@@ -30,58 +37,63 @@ public class Search extends AppCompatActivity {
     View root;
     DatabaseReference db;
     RecyclerView firebase_rec;
-    EditText search_box;
-    ImageButton search_btn;
+    FirebaseRecyclerOptions<Db> options;
+    FirebaseRecyclerAdapter<Db, MyviewHolder> fire_adapter;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         firebase_rec = (RecyclerView) findViewById(R.id.firebase_rec);
-        search_box = findViewById(R.id.search_box);
-        search_btn = findViewById(R.id.search_btn);
+        firebase_rec.setHasFixedSize(true);
+        firebase_rec.setLayoutManager(new LinearLayoutManager(this));
+
+
+        toolbar = findViewById(R.id.toolbar_search);
         db = FirebaseDatabase.getInstance().getReference("users");
+        setSupportActionBar(toolbar);
 
-        search_btn.setOnClickListener(new View.OnClickListener() {
+
+        options=new FirebaseRecyclerOptions.Builder<Db>().setQuery(db,Db.class).build();
+        fire_adapter=new FirebaseRecyclerAdapter<Db, MyviewHolder>(options) {
             @Override
-            public void onClick(View v) {
-                search();
+            protected void onBindViewHolder(@NonNull MyviewHolder holder, int position, @NonNull Db model) {
+                holder.name.setText(model.getName());
+                holder.age.setText(model.getAge());
+                holder.email.setText(model.getEmail());
             }
-        });
+            @NonNull
+            @Override
+            public MyviewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View v=LayoutInflater.from(parent.getContext()).inflate(R.layout.single_view_layout,parent,false);
 
+                return new MyviewHolder(v);
+            }
+        };
+        fire_adapter.startListening();
+        firebase_rec.setAdapter(fire_adapter);
     }
 
-    private void search(){
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.search_up, menu);
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
-        Query q = reference.orderByChild("name").equalTo(search_box.getText().toString());
-        q.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    String dbemail = dataSnapshot.child(search_box.getText().toString()).child("email").getValue(String.class);
-                    String dbage = dataSnapshot.child(search_box.getText().toString()).child("age").getValue(String.class);
-
-                } else {
-                    Toast.makeText(Search.this, "Account does not exist", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-
+        return super.onCreateOptionsMenu(menu);
     }
+
+
 
     class MyviewHolder extends RecyclerView.ViewHolder {
         View mview;
+        TextView name,email,age;
 
         public MyviewHolder(@NonNull View itemView) {
             super(itemView);
-            mview = itemView;
+            name=findViewById(R.id.rec_name);
+            email=findViewById(R.id.rec_email);
+            age=findViewById(R.id.rec_age);
+
         }
     }
 }
