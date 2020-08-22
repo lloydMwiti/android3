@@ -31,70 +31,51 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 import static java.security.AccessController.getContext;
 
 public class Search extends AppCompatActivity {
     View root;
     DatabaseReference db;
     RecyclerView firebase_rec;
-    FirebaseRecyclerOptions<Db> options;
-    FirebaseRecyclerAdapter<Db, MyviewHolder> fire_adapter;
+    ArrayList<Db> list;
+    MyviewAdapter adapter;
     Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+        list=new ArrayList<Db>();
         firebase_rec = (RecyclerView) findViewById(R.id.firebase_rec);
         firebase_rec.setHasFixedSize(true);
         firebase_rec.setLayoutManager(new LinearLayoutManager(this));
-
-
         toolbar = findViewById(R.id.toolbar_search);
         db = FirebaseDatabase.getInstance().getReference("users");
         setSupportActionBar(toolbar);
-
-
-        options=new FirebaseRecyclerOptions.Builder<Db>().setQuery(db,Db.class).build();
-        fire_adapter=new FirebaseRecyclerAdapter<Db, MyviewHolder>(options) {
+        db.addValueEventListener(new ValueEventListener() {
             @Override
-            protected void onBindViewHolder(@NonNull MyviewHolder holder, int position, @NonNull Db model) {
-                holder.name.setText(model.getName());
-                holder.age.setText(model.getAge());
-                holder.email.setText(model.getEmail());
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    Db p=dataSnapshot.getValue(Db.class);
+                    list.add(p);
+                }
+                adapter=new MyviewAdapter(Search.this,list);
+                firebase_rec.setAdapter(adapter);
             }
-            @NonNull
-            @Override
-            public MyviewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View v=LayoutInflater.from(parent.getContext()).inflate(R.layout.single_view_layout,parent,false);
 
-                return new MyviewHolder(v);
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(Search.this, "something went wrong check your connection", Toast.LENGTH_LONG).show();
             }
-        };
-        fire_adapter.startListening();
-        firebase_rec.setAdapter(fire_adapter);
+        });
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.search_up, menu);
-
         return super.onCreateOptionsMenu(menu);
-    }
-
-
-
-    class MyviewHolder extends RecyclerView.ViewHolder {
-        View mview;
-        TextView name,email,age;
-
-        public MyviewHolder(@NonNull View itemView) {
-            super(itemView);
-            name=findViewById(R.id.rec_name);
-            email=findViewById(R.id.rec_email);
-            age=findViewById(R.id.rec_age);
-
-        }
     }
 }
 
