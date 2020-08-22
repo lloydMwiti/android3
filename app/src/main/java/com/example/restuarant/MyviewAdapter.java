@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,12 +15,14 @@ import com.example.restuarant.DB.Db;
 
 import java.util.ArrayList;
 
-public class MyviewAdapter extends RecyclerView.Adapter<MyviewAdapter.MyviewHolder>{
+public class MyviewAdapter extends RecyclerView.Adapter<MyviewAdapter.MyviewHolder> implements Filterable {
     Context context;
     ArrayList<Db> profile;
+    ArrayList<Db> fullprofile;
     public MyviewAdapter(Context c,ArrayList<Db> p){
         this.context=c;
         this.profile=p;
+        this.fullprofile=new ArrayList<>(p);
     }
     @NonNull
     @Override
@@ -52,5 +56,34 @@ public class MyviewAdapter extends RecyclerView.Adapter<MyviewAdapter.MyviewHold
         }
     }
 
+    @Override
+    public Filter getFilter() {
+        return exampleFilter;
+    }
+    private Filter exampleFilter =new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            ArrayList<Db> filteredlist=new ArrayList<>();
+            if(constraint == null || constraint.length()==0){
+                filteredlist.addAll(fullprofile);
+            }else{
+                String search=constraint.toString().toLowerCase().trim();
+                for (Db p :fullprofile){
+                    if(p.getName().toLowerCase().contains(search) || p.getEmail().toLowerCase().contains(search)){
+                        filteredlist.add(p);
+                    }
+                }
+            }
+            FilterResults filterResults=new FilterResults();
+            filterResults.values=filteredlist;
+            return  filterResults;
+        }
 
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            profile.clear();
+            profile.addAll((ArrayList)results.values);
+            notifyDataSetChanged();
+        }
+    };
 }
